@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getListOfRepositories } from "../../lib/github";
 import { Project } from "./Project";
+import { SectionWrapper } from "../atom/SectionWrapper";
 
 export const ProjectSection = () => {
   const [projects, setProjects] = useState(null);
@@ -18,10 +19,12 @@ export const ProjectSection = () => {
   }
 
   return (
-    <div className="flex flex-wrap gap-8 justify-center">
-      {projects.map((project) => (
-        <Project key={project.homepageUrl} {...project} />
-      ))}
-    </div>
+    <SectionWrapper title="Projects">
+      <div className="flex flex-wrap gap-8 justify-center">
+        {projects.map((project) => (
+          <Project key={project.name} {...project} />
+        ))}
+      </div>
+    </SectionWrapper>
   );
 };

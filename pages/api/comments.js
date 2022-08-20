@@ -80,6 +80,7 @@ const postHandler = async (req, res) => {
 const getHandler = async (req, res) => {
   const response = await notion.databases.query({
     database_id: process.env.NOTION_DATABASE_ID,
+    page_size: 9,
     sorts: [
       {
         property: "Created",

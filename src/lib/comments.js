@@ -12,7 +12,7 @@ export const getComments = (signal) =>
  * Add a comment in the notion database
  * @param comment string
  * @param signal AbortSignal for cancelling the request.
- * @returns {Promise<{error: string}>}
+ * @returns {Promise}
  */
 export const addComment = (comment, signal) =>
   fetch("api/comments", {
