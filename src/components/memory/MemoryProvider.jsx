@@ -1,8 +1,6 @@
-import { createContext, useContext, useReducer, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import {
   CARD_STATE,
-  GAME_ACTION,
-  GAME_STATUS,
   getInitialMemory,
   isMemoryFinished,
   isPairCards,
@@ -18,35 +16,9 @@ export const useMemory = () => {
   return context;
 };
 
-const gameReducer = (state, action) => {
-  switch (action.type) {
-    case GAME_ACTION.ReturnCard:
-      if (state.status === GAME_STATUS.WAIT_FOR_CLEAR) {
-        return state;
-      }
-
-      return {
-        ...state,
-        status: GAME_STATUS.WAITING_FOR_SECOND_CARD,
-      };
-    case GAME_ACTION.Clear:
-      return {
-        ...state,
-        score: state.score + 1,
-        status: GAME_STATUS.PLAYING,
-      };
-    default:
-      throw new Error("Unknown action");
-  }
-};
-
 export const MemoryContextProvider = ({ children }) => {
   const [cards, setCards] = useState(() => getInitialMemory());
-  const [game, dispatch] = useReducer(gameReducer, {
-    score: 0,
-    status: GAME_STATUS.PLAYING,
-    tryPairCard: null,
-  });
+  const [score, setScore] = useState(0);
 
   const returnCard = (returnedCard) => {
     if (returnedCard.state !== CARD_STATE.HIDE) {
@@ -72,8 +44,10 @@ export const MemoryContextProvider = ({ children }) => {
     });
 
     setCards(newCards);
+  };
 
-    dispatch({ type: GAME_ACTION.ReturnCard });
+  useEffect(() => {
+    const returnedCards = cards.filter((c) => c.state === CARD_STATE.RETURNED);
 
     if (returnedCards.length !== 2) {
       return;
@@ -83,33 +57,32 @@ export const MemoryContextProvider = ({ children }) => {
 
     setTimeout(
       () => {
-        nextRound(isPair, newCards, returnedCards);
+        if (isPair && isMemoryFinished(cards)) {
+          console.log("MEMORY IS FINISH");
+        }
+
+        setCards((prev) =>
+          prev.map((card) => {
+            if (
+              card.state === CARD_STATE.RETURNED &&
+              returnedCards.includes(card)
+            ) {
+              card.state = isPair ? CARD_STATE.FIND : CARD_STATE.HIDE;
+            }
+            return card;
+          })
+        );
+
+        if (isPair) {
+          setScore((prev) => prev + 1);
+        }
       },
       isPair ? 400 : 1000
     );
-  };
-
-  const nextRound = (isPair, newCards, returnedCards) => {
-    if (isPair && isMemoryFinished(newCards)) {
-      console.log("MEMORY IS FINISH");
-    }
-
-    setCards((prev) =>
-      prev.map((card) => {
-        if (
-          card.state === CARD_STATE.RETURNED &&
-          returnedCards.includes(card)
-        ) {
-          card.state = isPair ? CARD_STATE.FIND : CARD_STATE.HIDE;
-        }
-        return card;
-      })
-    );
-    dispatch({ type: GAME_ACTION.Clear, isPair });
-  };
+  }, [cards]);
 
   return (
-    <MemoryContext.Provider value={{ cards, returnCard, score: game.score }}>
+    <MemoryContext.Provider value={{ cards, returnCard, score: score }}>
       {children}
     </MemoryContext.Provider>
   );
