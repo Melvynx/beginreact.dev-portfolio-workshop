@@ -1,5 +1,5 @@
 import { SocialNetworks } from "./atom/SocialNetwork";
-import { socialNetworks } from "../lib/social-network";
+import { socialNetworks } from "../lib/social-network-data";
 
 export const Header = () => {
   return (

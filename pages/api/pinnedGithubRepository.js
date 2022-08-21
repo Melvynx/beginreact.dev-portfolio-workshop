@@ -9,9 +9,9 @@ const handler = async (req, res) => {
           ... on Repository {
             name
             description
+            homepageUrl
             url
             stargazerCount
-            homepageUrl
           }
         }
       }

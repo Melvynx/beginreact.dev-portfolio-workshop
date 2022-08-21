@@ -9,38 +9,42 @@ export const Typography = ({
   ...props
 }) => {
   if (variant === "h1") {
+    const H1Component = component || "h1";
     return (
-      <h1
+      <H1Component
         {...props}
         className={clsx(
           className,
-          "text-4xl",
+          "text-5xl",
           color === "primary" ? "text-skin-primary" : "text-skin-secondary"
         )}
       >
         {children}
-      </h1>
+      </H1Component>
     );
   }
 
   if (variant === "h2") {
+    const H2Component = component || "h2";
     return (
-      <h2
+      <H2Component
         {...props}
         className={clsx(
           className,
-          "text-3xl",
+          "text-3xl md:text-4xl",
           color === "primary" ? "text-skin-primary" : "text-skin-secondary"
         )}
       >
         {children}
-      </h2>
+      </H2Component>
     );
   }
 
   if (variant === "h3") {
+    const H3Component = component || "h3";
+
     return (
-      <h3
+      <H3Component
         {...props}
         className={clsx(
           className,
@@ -49,12 +53,13 @@ export const Typography = ({
         )}
       >
         {children}
-      </h3>
+      </H3Component>
     );
   }
 
+  const BodyComponent = component || "p";
   return (
-    <p
+    <BodyComponent
       {...props}
       className={clsx(
         className,
@@ -66,6 +71,6 @@ export const Typography = ({
       )}
     >
       {children}
-    </p>
+    </BodyComponent>
   );
 };

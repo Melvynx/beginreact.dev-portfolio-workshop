@@ -22,7 +22,7 @@ const gameReducer = (state, action) => {
   switch (action.type) {
     case GAME_ACTION.ReturnCard:
       if (state.status === GAME_STATUS.WAIT_FOR_CLEAR) {
-        return;
+        return state;
       }
 
       return {
