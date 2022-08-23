@@ -2,8 +2,12 @@ import { FULL_NAME } from "../../lib/config";
 
 export const HeroSection = () => {
   return (
-    <div className="flex items-center flex-col md:flex-row gap-40">
-      <div className="flex flex-col gap-4">
+    <div className="">
+      {" "}
+      {/*Dark Mode - Exercise*/}
+      <div className="">
+        {" "}
+        {/*Dark Mode - Exercise*/}
         <h1 className="text-7xl">
           I'm{" "}
           <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">

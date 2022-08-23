@@ -97,6 +97,8 @@ un composant Loader dans le dossier `src/components/Loader`.
 
 Si il y a une erreur, tu dois aussi l'afficher.
 
+Le fichier de travail est dans `ProjectSection.jsx`.
+
 ### Petit exercise : refactor
 
 Utilise qu'un seul state pour gérer les données et le state.
@@ -116,6 +118,8 @@ Crée un hooks custom qui permet de fetch des données. Il prend en paramètre
 ainsi que les erreurs.
 
 Il retourne une fonction qui permet de refresh les données.
+
+Le fichier pour ajouter ton hooks existe déjà dans `src/hooks/useFetch.js`
 
 ## Bonus : Gérer le unmount
 

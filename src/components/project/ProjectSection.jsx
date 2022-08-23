@@ -1,38 +1,23 @@
 import { Project } from "./Project";
 import { SectionWrapper } from "../atom/SectionWrapper";
-import { useAsyncState } from "../../hooks/useAsync";
-import { getListOfUrlRepositoriesUrl } from "../../lib/api-url";
-import { Typography } from "../atom/Typography";
-import { Loader } from "../atom/Loader";
-import { GITHUB_USERNAME } from "../../lib/config";
 
 export const ProjectSection = () => {
-  const {
-    data: projects,
-    error,
-    isLoading,
-    isIdle,
-    isRejected,
-  } = useAsyncState(getListOfUrlRepositoriesUrl(GITHUB_USERNAME));
-
-  if (isLoading || isIdle) {
-    return <Loader />;
-  }
-
-  if (isRejected) {
-    return (
-      <Typography className="text-red-500 font-bold">
-        Sorry, there is an error : {error}
-      </Typography>
-    );
-  }
+  // GitHub Repository - Exercise
+  const projects = [
+    {
+      name: "DEMO",
+      description: "DEMO",
+      stargazerCount: 12,
+      url: "https://github.com",
+      homepageUrl: "https://github.com",
+    },
+  ];
 
   return (
     <SectionWrapper title="Projects">
       <div className="flex flex-wrap gap-8 justify-center">
-        {projects.map((project) => (
-          <Project key={project.name} {...project} />
-        ))}
+        {/* GitHub Repository - Exercise (replace this) */}
+        <Project {...projects[0]} />
       </div>
     </SectionWrapper>
   );

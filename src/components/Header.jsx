@@ -1,5 +1,4 @@
 import { SocialNetworks } from "./atom/SocialNetwork";
-import { useTheme } from "../context/ThemeProvider";
 import { MdOutlineModeNight, MdOutlineWbSunny } from "react-icons/md";
 import clsx from "clsx";
 import styles from "./Header.module.css";
@@ -18,7 +17,10 @@ export const Header = () => {
 };
 
 const ToggleThemeButton = () => {
-  const { isDark, isLight, toggleTheme } = useTheme();
+  // Dark Mode - Exercise
+  const isDark = false;
+  const isLight = false;
+  const toggleTheme = () => {};
 
   return (
     <div className=" border-primary rounded-full p-2 relative overflow-hidden">

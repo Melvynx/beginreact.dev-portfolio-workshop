@@ -3,6 +3,8 @@ import { Typography } from "../atom/Typography";
 export const Comment = ({ username, comment, createdAt }) => {
   const createdAtDate = new Date(createdAt);
 
+  const formattedDate = `${createdAtDate.getHours()}:${createdAtDate.getMinutes()}} - ${createdAtDate.getDate()}/${createdAtDate.getMonth()}/${createdAtDate.getFullYear()}`;
+
   return (
     <fieldset className="p-4 pt-2 rounded-md bg-paper border-opacity-25 flex flex-col justify-between">
       <legend className="text-sm text-primary">{username}</legend>
@@ -12,7 +14,7 @@ export const Comment = ({ username, comment, createdAt }) => {
         color="secondary"
         className="self-end text-xs"
       >
-        {createdAtDate.toLocaleString()}
+        {formattedDate}
       </Typography>
     </fieldset>
   );
