@@ -1,10 +1,27 @@
-export const Button = (props) => {
+import clsx from "clsx";
+
+/**
+ * Simple button for the application
+ *
+ * @param props All props that a button can take
+ * @param children Children of the button
+ * @param className Class name of the button
+ * @returns {JSX.Element}
+ * @constructor
+ */
+export const Button = ({ children, className, ...props }) => {
   return (
     <button
-      className="inline-block px-8 py-3 text-sm font-medium text-white transition bg-primary rounded hover:scale-110 active:opacity-80 hover:shadow-xl active:bg-primary focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-50"
+      className={clsx(
+        "inline-block px-8 py-3 text-sm font-medium text-white transition bg-primary rounded",
+        "focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-50",
+        "active:bg-primary active:opacity-80",
+        "hover:scale-105  hover:shadow-xl",
+        className
+      )}
       {...props}
     >
-      {props.children}
+      {children}
     </button>
   );
 };

@@ -9,7 +9,7 @@
   --color-text-secondary: 38 38 38;
 
   --color-primary: 234 0 255;
-  --color-seconary: 4 217 255;
+  --color-secondary: 4 217 255;
 }
 
 #app.dark {
@@ -19,9 +19,13 @@
   --color-text-secondary: 217 217 217;
 
   --color-primary: 234 0 255;
-  --color-seconary: 4 217 255;
+  --color-secondary: 4 217 255;
 }
 
 #app {
   @apply bg-background text-skin-primary;
+}
+
+* {
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }

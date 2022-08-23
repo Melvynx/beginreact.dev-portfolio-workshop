@@ -1,0 +1,27 @@
+@keyframes fadeOutToRight {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate(24px, 8px);
+  }
+}
+
+@keyframes fadeInFromLeft {
+  from {
+    opacity: 0;
+    transform: translate(-24px, 8px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.enter {
+  animation: fadeInFromLeft 500ms ease-in-out forwards;
+}
+
+.exit {
+  animation: fadeOutToRight 500ms ease-in-out forwards;
+}

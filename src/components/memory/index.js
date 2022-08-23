@@ -1,1 +1,3 @@
-export * from "./MemorySection";
+import { MemorySection } from "./MemorySection";
+
+export default MemorySection;
