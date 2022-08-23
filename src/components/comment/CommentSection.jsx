@@ -1,7 +1,7 @@
 import { CommentForm } from "./CommentForm";
 import { Comment } from "./Comment";
 import { SectionWrapper } from "../atom/SectionWrapper";
-import { useAsyncState } from "../../hooks/useAsync";
+import { useFetch } from "../../hooks/useFetch";
 import { commentsUrl } from "../../lib/api-url";
 import { Typography } from "../atom/Typography";
 import { Loader } from "../atom/Loader";
@@ -14,7 +14,7 @@ export const CommentSection = () => {
     isRejected,
     isResolved,
     run,
-  } = useAsyncState(commentsUrl);
+  } = useFetch(commentsUrl);
 
   const onAddComment = (comment) => {
     return fetch(commentsUrl, {

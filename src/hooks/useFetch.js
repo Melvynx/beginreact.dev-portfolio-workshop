@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useReducer } from "react";
+import { useIsMounted } from "./useIsMounted";
 
-function asyncReducer(state, action) {
+function fetchReducer(state, action) {
   switch (action.type) {
     case "pending": {
       return { status: "pending", data: null, error: null };
@@ -17,26 +18,38 @@ function asyncReducer(state, action) {
   }
 }
 
-export const useAsyncState = (url, config) => {
-  const [state, dispatch] = useReducer(asyncReducer, {
+export const useFetch = (url, config) => {
+  const [state, dispatch] = useReducer(fetchReducer, {
     status: "idle",
     data: null,
     error: null,
   });
+  const isMounted = useIsMounted();
 
   const { data, error, status } = state;
 
   const run = useCallback(() => {
-    fetch(url, config).then(async (res) => {
-      const json = await res.json();
+    fetch(url, config)
+      .then(async (res) => {
+        const json = await res.json();
 
-      if (res.ok) {
-        console.log({ json });
-        dispatch({ type: "resolved", data: json });
-      } else {
-        dispatch({ type: "rejected", error: json });
-      }
-    });
+        if (!isMounted()) {
+          return;
+        }
+
+        if (res.ok) {
+          console.log({ json });
+          dispatch({ type: "resolved", data: json });
+        } else {
+          dispatch({ type: "rejected", error: json });
+        }
+      })
+      .catch((error) => {
+        if (!isMounted()) {
+          return;
+        }
+        dispatch({ type: "rejected", error });
+      });
   }, [config, url]);
 
   useEffect(() => {

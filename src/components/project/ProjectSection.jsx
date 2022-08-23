@@ -1,6 +1,6 @@
 import { Project } from "./Project";
 import { SectionWrapper } from "../atom/SectionWrapper";
-import { useAsyncState } from "../../hooks/useAsync";
+import { useFetch } from "../../hooks/useFetch";
 import { getListOfUrlRepositoriesUrl } from "../../lib/api-url";
 import { Typography } from "../atom/Typography";
 import { Loader } from "../atom/Loader";
@@ -13,7 +13,7 @@ export const ProjectSection = () => {
     isLoading,
     isIdle,
     isRejected,
-  } = useAsyncState(getListOfUrlRepositoriesUrl(GITHUB_USERNAME));
+  } = useFetch(getListOfUrlRepositoriesUrl(GITHUB_USERNAME));
 
   if (isLoading || isIdle) {
     return <Loader />;
