@@ -176,29 +176,34 @@ const returnCard = (returnedCard) => {
 
 ```jsx
 const {
- data: comments,
- error,
- isLoading,
- isRejected,
- isResolved,
- run,
-} = useAsyncState(commentsUrl);
+  data: comments,
+  error,
+  isLoading,
+  isRejected,
+  isResolved,
+  run,
+} = useFetch(commentsUrl);
 
 // ...
 
 return (
   // ...
-     {isResolved 
-             ? comments.map((comment) => (
-                     <Comment key={comment.id} {...comment} />
-             ))
-             : null}
-    {isLoading ? <Loader /> : null}
-    {isRejected ? (
-      <Typography variant="body1">
-         Sorry, there is an error : {error}
-      </Typography>
-    ) : null}
+  {isResolved
+    ? comments.map((comment) => (
+      <Comment key={comment.id} {...comment} />
+    ))
+    : null
+}
+{
+  isLoading ? <Loader/> : null
+}
+{
+  isRejected ? (
+    <Typography variant="body1">
+      Sorry, there is an error : {error}
+    </Typography>
+  ) : null
+}
 // ...
 )
   ```
