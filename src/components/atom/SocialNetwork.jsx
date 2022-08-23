@@ -1,11 +1,11 @@
+import clsx from "clsx";
+
 /**
  *
  * @param socialNetworks {{url: string, name: string, icon: React.ReactElement}[]}
  * @param className string
  * @constructor
  */
-import clsx from "clsx";
-
 export const SocialNetworks = ({ socialNetworks, className }) => {
   return (
     <div className={clsx("flex gap-4", className)}>

@@ -1,8 +1,6 @@
 import { Typography } from "./atom/Typography";
 import { SocialNetworks } from "./atom/SocialNetwork";
-import { socialNetworks } from "../lib/social-network-data";
-
-const email = "jean@gmail.com";
+import { EMAIL, SOCIAL_NETWORKS } from "../lib/config";
 
 export const Footer = () => {
   return (
@@ -14,11 +12,11 @@ export const Footer = () => {
         </Typography>
         <a
           className="text-base text-primary underline"
-          href={`mailto:${email}`}
+          href={`mailto:${EMAIL}`}
         >
-          {email}
+          {EMAIL}
         </a>
-        <SocialNetworks socialNetworks={socialNetworks} />
+        <SocialNetworks socialNetworks={SOCIAL_NETWORKS} />
       </div>
     </footer>
   );

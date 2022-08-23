@@ -1,17 +1,17 @@
 import { SocialNetworks } from "./atom/SocialNetwork";
-import { socialNetworks } from "../lib/social-network-data";
 import { useTheme } from "../context/ThemeProvider";
 import { MdOutlineModeNight, MdOutlineWbSunny } from "react-icons/md";
 import clsx from "clsx";
 import styles from "./Header.module.css";
+import { FULL_NAME, SOCIAL_NETWORKS } from "../lib/config";
 
 export const Header = () => {
   return (
     <header className="flex py-8">
       <span className="font-extrabold text-transparent text-xl bg-clip-text bg-gradient-to-r from-primary to-secondary">
-        Jean-Pierre Smith
+        {FULL_NAME}
       </span>
-      <SocialNetworks className="ml-auto" socialNetworks={socialNetworks} />
+      <SocialNetworks className="ml-auto" socialNetworks={SOCIAL_NETWORKS} />
       <ToggleThemeButton />
     </header>
   );

@@ -1,5 +1,17 @@
 import clsx from "clsx";
 
+/**
+ * Typography is a component to harmonize the typography of the application.
+ *
+ * @param variant "h2" | "h3" | "body1" | "body2"
+ * @param component Override the component to use
+ * @param color "primary" | "secondary"
+ * @param children Text to display
+ * @param className Class name of the component
+ * @param props All other props for the text
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export const Typography = ({
   variant = "body1",
   component,

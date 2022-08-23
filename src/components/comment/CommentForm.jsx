@@ -9,8 +9,18 @@ export const CommentForm = ({ onSubmit }) => {
     event.preventDefault();
 
     const form = event.target;
-    const username = event.currentTarget.username.value;
-    const comment = event.currentTarget.comment.value;
+    const username = event.currentTarget.username.value ?? ""; // 4 and 20 char
+    const comment = event.currentTarget.comment.value ?? ""; // 10 and 100 char
+
+    if (username.length < 4 || username.length > 20) {
+      setError("Username must be between 4 and 20 characters");
+      return;
+    }
+
+    if (comment.length < 10 || comment.length > 100) {
+      setError("Comment must be between 10 and 100 characters");
+      return;
+    }
 
     onSubmit({ username, comment })
       .then(() => {

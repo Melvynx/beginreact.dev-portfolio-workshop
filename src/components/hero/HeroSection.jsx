@@ -1,3 +1,5 @@
+import { FULL_NAME } from "../../lib/config";
+
 export const HeroSection = () => {
   return (
     <div className="flex items-center flex-col md:flex-row gap-40">
@@ -5,7 +7,7 @@ export const HeroSection = () => {
         <h1 className="text-7xl">
           I'm{" "}
           <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-            Jean-Pierre Smith
+            {FULL_NAME}
           </span>
         </h1>
         <p className="text-xl">

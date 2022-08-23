@@ -3,6 +3,7 @@
   position: relative;
   width: 80px;
   height: 80px;
+  margin: auto;
 }
 .loader div {
   animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
@@ -15,8 +16,9 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #fff;
   margin: -4px 0 0 -4px;
+
+  @apply bg-black dark:bg-white;
 }
 .loader div:nth-child(1) {
   animation-delay: -0.036s;

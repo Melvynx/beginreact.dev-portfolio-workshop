@@ -17,18 +17,19 @@ export const CommentSection = () => {
   } = useAsyncState(commentsUrl);
 
   const onAddComment = (comment) => {
-    return fetch(commentsUrl, { method: "POST", body: comment }).then(
-      async (res) => {
-        const json = await res.json();
+    return fetch(commentsUrl, {
+      method: "POST",
+      body: JSON.stringify(comment),
+    }).then(async (res) => {
+      const json = await res.json();
 
-        if (res.ok) {
-          run();
-          return json;
-        }
-
-        return Promise.reject(json.error);
+      if (res.ok) {
+        run();
+        return json;
       }
-    );
+
+      return Promise.reject(json.error);
+    });
   };
 
   return (

@@ -4,8 +4,7 @@ import { useAsyncState } from "../../hooks/useAsync";
 import { getListOfUrlRepositoriesUrl } from "../../lib/api-url";
 import { Typography } from "../atom/Typography";
 import { Loader } from "../atom/Loader";
-
-const USERNAME = "melvynx";
+import { GITHUB_USERNAME } from "../../lib/config";
 
 export const ProjectSection = () => {
   const {
@@ -14,7 +13,7 @@ export const ProjectSection = () => {
     isLoading,
     isIdle,
     isRejected,
-  } = useAsyncState(getListOfUrlRepositoriesUrl(USERNAME));
+  } = useAsyncState(getListOfUrlRepositoriesUrl(GITHUB_USERNAME));
 
   if (isLoading || isIdle) {
     return <Loader />;

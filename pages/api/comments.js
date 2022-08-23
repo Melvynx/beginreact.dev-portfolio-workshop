@@ -32,7 +32,7 @@ const postHandler = async (req, res) => {
     const ipDate = IP_CACHE[ip].filter((date) => {
       return date > yesterday;
     });
-    if (ipDate.length >= 3) {
+    if (ipDate.length >= 1) {
       res.status(403).json({
         error: "You can only post 3 comments per day",
       });
@@ -44,9 +44,10 @@ const postHandler = async (req, res) => {
   }
 
   if (!username || !comment) {
-    res.status(400).json({ error: "username and comment are required" });
+    res.status(400).json({ error: "Username and Comment are required" });
     return;
   }
+
   const response = await notion.pages.create({
     parent: {
       type: "database_id",

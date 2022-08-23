@@ -1,9 +1,18 @@
 import { useId } from "react";
 
-export const TextField = (props) => {
+/**
+ * TextField is an input field with a label !
+ *
+ * @param props All props that a common input or textarea take !
+ * @param label Label of the input field
+ * @param component Component of the input field (textarea or input)
+ * @returns {JSX.Element}
+ * @constructor
+ */
+export const TextField = ({ label, component, ...props }) => {
   const id = useId();
 
-  const Component = props.component || "input";
+  const Component = component || "input";
 
   return (
     <div className="relative">
@@ -11,7 +20,7 @@ export const TextField = (props) => {
         className="block text-xs md:text-sm font-medium text-skin-secondary"
         htmlFor={id}
       >
-        {props.label}
+        {label}
       </label>
 
       <Component

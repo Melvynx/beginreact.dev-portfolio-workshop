@@ -164,7 +164,8 @@ Dans cette exercise tu vas devoir :
    2. L'url pour récupérer les commentaire se trouve dans le fichier `api-url.js` et se nomme `commentsUrl`.
 2. Afficher les commentaires !
 3. Ajouter un commentaire ! 
-   1. Tu vas devoir faire une fetch en utilisant `post` avec l'url `commentsUrl`. 
+   1. Tu vas devoir faire une fetch en utilisant `post` avec l'url `commentsUrl`.
+   2. Avant de faire le post, le username doit faire entre 4 et 20 caractères et le commentaire entre 10 et 100.
    2. Je précise le body qu'il faut avoir dans le fichier `api-url.js`. 
    3. Attention l'api renvoie des erreurs sous cette forme : `{error: "message"}`. 
    4. Il faut afficher cette erreur

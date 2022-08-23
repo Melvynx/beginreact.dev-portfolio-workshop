@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useReducer } from "react";
 
 function asyncReducer(state, action) {
   switch (action.type) {
@@ -18,7 +18,7 @@ function asyncReducer(state, action) {
 }
 
 export const useAsyncState = (url, config) => {
-  const [state, dispatch] = React.useReducer(asyncReducer, {
+  const [state, dispatch] = useReducer(asyncReducer, {
     status: "idle",
     data: null,
     error: null,
