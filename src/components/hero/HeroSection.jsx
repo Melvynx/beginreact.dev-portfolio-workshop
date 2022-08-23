@@ -1,6 +1,6 @@
 export const HeroSection = () => {
   return (
-    <div className="flex items-center gap-40">
+    <div className="flex items-center flex-col md:flex-row gap-40">
       <div className="flex flex-col gap-4">
         <h1 className="text-7xl">
           I'm{" "}

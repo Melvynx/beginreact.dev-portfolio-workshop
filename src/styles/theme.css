@@ -25,3 +25,7 @@
 #app {
   @apply bg-background text-skin-primary;
 }
+
+* {
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}

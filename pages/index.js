@@ -1,4 +1,3 @@
-import { getListOfRepositories } from "../src/lib/github";
 import dynamic from "next/dynamic";
 import { Header } from "../src/components/Header";
 import { HeroSection } from "../src/components/hero";
@@ -12,9 +11,6 @@ const DynamicMemorySection = dynamic(() => import("../src/components/memory"), {
 });
 
 const Home = () => {
-  getListOfRepositories("melvynx").then((r) => {
-    console.log(r);
-  });
   return (
     <div className="flex gap-40 flex-col">
       <Header />

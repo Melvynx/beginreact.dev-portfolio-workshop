@@ -76,5 +76,5 @@ export const isPairCards = (card1, card2) => {
 };
 
 export const isMemoryFinished = (cards) => {
-  return !cards.some((card) => card.state === CARD_STATE.HIDE);
+  return cards.every((card) => card.state === CARD_STATE.FIND);
 };

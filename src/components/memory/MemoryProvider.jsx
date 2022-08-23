@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import {
   CARD_STATE,
   getInitialMemory,
@@ -18,7 +18,9 @@ export const useMemory = () => {
 
 export const MemoryContextProvider = ({ children }) => {
   const [cards, setCards] = useState(() => getInitialMemory());
-  const [score, setScore] = useState(0);
+  const [tryCount, setTryCount] = useState(0);
+
+  const isFinish = useMemo(() => isMemoryFinished(cards), [cards]);
 
   const returnCard = (returnedCard) => {
     if (returnedCard.state !== CARD_STATE.HIDE) {
@@ -27,17 +29,13 @@ export const MemoryContextProvider = ({ children }) => {
 
     const returnedCards = cards.filter((c) => c.state === CARD_STATE.RETURNED);
 
-    if (
-      returnedCards?.length === 2 ||
-      returnedCards?.includes(returnedCard.id)
-    ) {
+    if (returnedCards.length === 2 || returnedCards.includes(returnedCard.id)) {
       return;
     }
 
     const newCards = cards.map((card) => {
       if (returnedCard.id === card.id) {
         card.state = CARD_STATE.RETURNED;
-        returnedCards.push(card);
         return card;
       }
       return card;
@@ -57,10 +55,6 @@ export const MemoryContextProvider = ({ children }) => {
 
     setTimeout(
       () => {
-        if (isPair && isMemoryFinished(cards)) {
-          console.log("MEMORY IS FINISH");
-        }
-
         setCards((prev) =>
           prev.map((card) => {
             if (
@@ -73,16 +67,21 @@ export const MemoryContextProvider = ({ children }) => {
           })
         );
 
-        if (isPair) {
-          setScore((prev) => prev + 1);
-        }
+        setTryCount((prev) => prev + 1);
       },
       isPair ? 400 : 1000
     );
   }, [cards]);
 
+  const reset = () => {
+    setCards(getInitialMemory());
+    setTryCount(0);
+  };
+
   return (
-    <MemoryContext.Provider value={{ cards, returnCard, score: score }}>
+    <MemoryContext.Provider
+      value={{ cards, returnCard, tryCount, reset, isFinish }}
+    >
       {children}
     </MemoryContext.Provider>
   );

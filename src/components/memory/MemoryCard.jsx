@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import styles from "./MemoryCard.module.css";
 import { CARD_STATE } from "../../lib/memory";
+import { useTheme } from "../../context/ThemeProvider";
 
 export const MemoryCard = ({ children, card, onClick }) => {
   const isReturned =
@@ -31,8 +32,13 @@ export const MemoryCard = ({ children, card, onClick }) => {
           }
         )}
       >
-        ❔
+        <QuestionEmoji />
       </button>
     </div>
   );
+};
+
+const QuestionEmoji = () => {
+  const { isLight } = useTheme();
+  return isLight ? "❓" : "❔";
 };

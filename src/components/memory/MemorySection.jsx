@@ -2,6 +2,7 @@ import { MemoryBoard } from "./MemoryBoard";
 import { Typography } from "../atom/Typography";
 import { MemoryContextProvider, useMemory } from "./MemoryProvider";
 import { SectionWrapper } from "../atom/SectionWrapper";
+import { Button } from "../atom/Button";
 
 export const MemorySection = () => {
   return (
@@ -11,6 +12,7 @@ export const MemorySection = () => {
           <div className="flex flex-col gap-2 items-center">
             <CurrentScore />
             <MemoryBoard />
+            <ResetButton />
           </div>
         </div>
       </MemoryContextProvider>
@@ -19,7 +21,21 @@ export const MemorySection = () => {
 };
 
 const CurrentScore = () => {
-  const { score } = useMemory();
+  const { score, isFinish } = useMemory();
+
+  if (isFinish) {
+    return (
+      <Typography variant="body2 underline">
+        You <b>finished</b> the memory in {score} times !
+      </Typography>
+    );
+  }
 
   return <Typography variant="body2">You try {score} times.</Typography>;
+};
+
+const ResetButton = () => {
+  const { reset } = useMemory();
+
+  return <Button onClick={reset}>Reset</Button>;
 };

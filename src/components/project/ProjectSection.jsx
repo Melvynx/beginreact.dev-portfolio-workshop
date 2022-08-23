@@ -1,21 +1,31 @@
-import { useEffect, useState } from "react";
-import { getListOfRepositories } from "../../lib/github";
 import { Project } from "./Project";
 import { SectionWrapper } from "../atom/SectionWrapper";
+import { useAsyncState } from "../../hooks/useAsync";
+import { getListOfUrlRepositoriesUrl } from "../../lib/api-url";
+import { Typography } from "../atom/Typography";
+import { Loader } from "../atom/Loader";
+
+const USERNAME = "melvynx";
 
 export const ProjectSection = () => {
-  const [projects, setProjects] = useState(null);
+  const {
+    data: projects,
+    error,
+    isLoading,
+    isIdle,
+    isRejected,
+  } = useAsyncState(getListOfUrlRepositoriesUrl(USERNAME));
 
-  useEffect(() => {
-    const controller = new AbortController();
-    getListOfRepositories("melvynx", controller.signal).then((data) => {
-      setProjects(data);
-    });
-    return () => {};
-  }, []);
+  if (isLoading || isIdle) {
+    return <Loader />;
+  }
 
-  if (!projects) {
-    return <p>Loading...</p>;
+  if (isRejected) {
+    return (
+      <Typography className="text-red-500 font-bold">
+        Sorry, there is an error : {error}
+      </Typography>
+    );
   }
 
   return (

@@ -3,6 +3,9 @@ module.exports = {
   content: ["./pages/**/*.{js,ts,jsx,tsx}", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      gridTemplateColumns: {
+        "auto-fill-200-300": "repeat(auto-fill, minmax(200px, 1fr))",
+      },
       textColor: {
         skin: {
           primary: "rgb(var(--color-text-primary) / <alpha-value>)",

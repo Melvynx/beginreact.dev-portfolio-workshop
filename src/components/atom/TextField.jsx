@@ -15,7 +15,7 @@ export const TextField = (props) => {
       </label>
 
       <Component
-        className="w-full p-3 mt-1 text-sm border-2 border-paper bg-transparent focus:border-opacity-100 border-opacity-50  border-primary rounded"
+        className="w-full p-3 mt-1 text-sm border-2 bg-transparent focus:border-opacity-100 border-opacity-50  border-primary rounded"
         id={id}
         {...props}
       />

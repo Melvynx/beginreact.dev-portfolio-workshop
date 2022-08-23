@@ -9,7 +9,6 @@ export const CommentForm = ({ onSubmit }) => {
     event.preventDefault();
 
     const form = event.target;
-    console.log(form);
     const username = event.currentTarget.username.value;
     const comment = event.currentTarget.comment.value;
 
