@@ -27,11 +27,12 @@ aura un staté `theme` qui devra pour être récupéré partout dans l'app et au
 Il y a un button, qui est déjà fait, pour changer le Theme qui se nomme :
 `ToggleDarkThemeButton.jsx`.
 
-Quelques conditions : 
-* Si l'utilisateur change le theme, il doit être enregistré dans le localStorage.
-* Par défaut, c'est le thème de l'ordinateur qui doit être utilisé, utilise [prefers color scheme](https://developer.mozilla.org/fr/docs/Web/CSS/@media/prefers-color-scheme)
-* Si le thème par défaut de l'utilisateur change, il faut que le thème de l'application aussi
-sauf si l'utilisateur à définir le thème à la main, dans ce cas aucune modification n'est faite.
+Quelques conditions :
+
+- Si l'utilisateur change le theme, il doit être enregistré dans le localStorage.
+- Par défaut, c'est le thème de l'ordinateur qui doit être utilisé, utilise [prefers color scheme](https://developer.mozilla.org/fr/docs/Web/CSS/@media/prefers-color-scheme)
+- Si le thème par défaut de l'utilisateur change, il faut que le thème de l'application aussi
+  sauf si l'utilisateur à définir le thème à la main, dans ce cas aucune modification n'est faite.
 
 Pas claire ? Regarde la vidéo Intro et test la démo.
 
@@ -103,13 +104,14 @@ Le fichier de travail est dans `ProjectSection.jsx`.
 
 Utilise qu'un seul state pour gérer les données et le state.
 
-Il te faut utiliser `useReducer` qui a ses états : 
-* `idle`: avant le premier fetch
-* `pending`: pendant le fetch
-* `rejected`: en cas d'erreur
-* `resolved`: en cas de succès
+Il te faut utiliser `useReducer` qui a ses états :
 
-Si tu as galère, regarde le hint dans le fichier. 
+- `idle`: avant le premier fetch
+- `pending`: pendant le fetch
+- `rejected`: en cas d'erreur
+- `resolved`: en cas de succès
+
+Si tu as galère, regarde le hint dans le fichier.
 
 ### Petit exercise : sépare le code
 
@@ -123,7 +125,7 @@ Le fichier pour ajouter ton hooks existe déjà dans `src/hooks/useFetch.js`
 
 ## Bonus : Gérer le unmount
 
-Quand ton composant est unmount, si ton fetch en `resolved` tu vas avoir 
+Quand ton composant est unmount, si ton fetch en `resolved` tu vas avoir
 une erreur React.
 Pour fixer ça il va falloir que tu utilises un hooks pour voir si ton composant
 est unmount, est dans ce cas ne pas set le state.
@@ -144,10 +146,11 @@ Je t'ai déjà préparé toute l'interface avec le Board et les Card.
 Mais je n'ai fait aucune logique.
 
 Mais voici les règles à respecter :
-* Tu dois utiliser un Context
-* On doit pouvoir réinitialiser le jeu
-* Le nombre d'essais est compté
-* Le memory doit être créé en utilisant la méthode `getInitialMemory` de `memory.js`
+
+- Tu dois utiliser un Context
+- On doit pouvoir réinitialiser le jeu
+- Le nombre d'essais est compté
+- Le memory doit être créé en utilisant la méthode `getInitialMemory` de `memory.js`
 
 Si tu galères, regarde la vidéo solution jusqu'à être débloqué puis
 reprends l'exercise.
@@ -163,17 +166,18 @@ J'ai déjà créé le composant Commentaire ainsi que le formulaire,
 sans aucune logique.
 
 Dans cette exercise tu vas devoir :
+
 1. Récupérer les commentaires.
-   1. tu peux utiliser le hooks `useAsync` de l'exercise concernant les repository GitHub. 
+   1. tu peux utiliser le hooks `useAsync` de l'exercise concernant les repository GitHub.
    2. L'url pour récupérer les commentaire se trouve dans le fichier `api-url.js` et se nomme `commentsUrl`.
 2. Afficher les commentaires !
-3. Ajouter un commentaire ! 
+3. Ajouter un commentaire !
    1. Tu vas devoir faire une fetch en utilisant `post` avec l'url `commentsUrl`.
    2. Avant de faire le post, le username doit faire entre 4 et 20 caractères et le commentaire entre 10 et 100.
-   2. Je précise le body qu'il faut avoir dans le fichier `api-url.js`. 
-   3. Attention l'api renvoie des erreurs sous cette forme : `{error: "message"}`. 
-   4. Il faut afficher cette erreur
-   dans le formulaire. De plus il ne faut pas utiliser de state 
-   5. Quand tu ajoutes un commentaire, il faut refresh la page des commentaires.
+   3. Je précise le body qu'il faut avoir dans le fichier `api-url.js`.
+   4. Attention l'api renvoie des erreurs sous cette forme : `{error: "message"}`.
+   5. Il faut afficher cette erreur
+      dans le formulaire. De plus il ne faut pas utiliser de state
+   6. Quand tu ajoutes un commentaire, il faut refresh la page des commentaires.
 
 Comme dans l'exercise précédent, je ne t'offre que des tips en plus.
