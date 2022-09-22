@@ -13,7 +13,7 @@ export const HeroSection = () => {
           </span>
         </h1>
         <p className="text-xl">
-          <b>Apprenti React.</b> I’m a software developer that make thing on
+          <b>Apprenti React.</b> I'm a software developer that make thing on
           internet, very happy to see your here, place holder please fill something
           here please fill something here.
         </p>
