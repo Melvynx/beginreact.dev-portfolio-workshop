@@ -1,10 +1,10 @@
-import { Project } from "./Project";
-import { SectionWrapper } from "../atom/SectionWrapper";
-import { useFetch } from "../../hooks/useFetch";
-import { getListOfUrlRepositoriesUrl } from "../../lib/api-url";
-import { Typography } from "../atom/Typography";
-import { Loader } from "../atom/Loader";
-import { GITHUB_USERNAME } from "../../lib/config";
+import { useFetch } from '../../hooks/useFetch';
+import { getListOfUrlRepositoriesUrl } from '../../lib/api-url';
+import { GITHUB_USERNAME } from '../../lib/config';
+import { Loader } from '../atom/Loader';
+import { SectionWrapper } from '../atom/SectionWrapper';
+import { Typography } from '../atom/Typography';
+import { Project } from './Project';
 
 export const ProjectSection = () => {
   const {
@@ -21,7 +21,7 @@ export const ProjectSection = () => {
 
   if (isRejected) {
     return (
-      <Typography className="text-red-500 font-bold">
+      <Typography className="font-bold text-red-500">
         Sorry, there is an error : {error}
       </Typography>
     );
@@ -29,7 +29,7 @@ export const ProjectSection = () => {
 
   return (
     <SectionWrapper title="Projects">
-      <div className="flex flex-wrap gap-8 justify-center">
+      <div className="flex flex-wrap justify-center gap-4 md:gap-8">
         {projects.map((project) => (
           <Project key={project.name} {...project} />
         ))}

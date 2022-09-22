@@ -1,14 +1,14 @@
-import { SocialNetworks } from "./atom/SocialNetwork";
-import { useTheme } from "../context/ThemeProvider";
-import { MdOutlineModeNight, MdOutlineWbSunny } from "react-icons/md";
-import clsx from "clsx";
-import styles from "./Header.module.css";
-import { FULL_NAME, SOCIAL_NETWORKS } from "../lib/config";
+import clsx from 'clsx';
+import { MdOutlineModeNight, MdOutlineWbSunny } from 'react-icons/md';
+import { useTheme } from '../context/ThemeProvider';
+import { FULL_NAME, SOCIAL_NETWORKS } from '../lib/config';
+import { SocialNetworks } from './atom/SocialNetwork';
+import styles from './Header.module.css';
 
 export const Header = () => {
   return (
     <header className="flex py-8">
-      <span className="font-extrabold text-transparent text-xl bg-clip-text bg-gradient-to-r from-primary to-secondary">
+      <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-2xl font-extrabold text-transparent drop-shadow-[0_0px_20px_rgba(0,0,0,0.25)]">
         {FULL_NAME}
       </span>
       <SocialNetworks className="ml-auto" socialNetworks={SOCIAL_NETWORKS} />
@@ -21,17 +21,17 @@ const ToggleThemeButton = () => {
   const { isDark, isLight, toggleTheme } = useTheme();
 
   return (
-    <div className=" border-primary rounded-full p-2 relative overflow-hidden">
+    <div className="relative p-2 overflow-hidden rounded-full border-primary">
       <MdOutlineWbSunny
         onClick={toggleTheme}
-        className={clsx("cursor-pointer relative h-6 w-6 text-primary", {
+        className={clsx('relative h-6 w-6 cursor-pointer text-primary', {
           [styles.enter]: isLight,
           [styles.exit]: isDark,
         })}
       />
       <MdOutlineModeNight
         onClick={toggleTheme}
-        className={clsx("cursor-pointer absolute h-6 w-6 top-2 text-primary", {
+        className={clsx('absolute top-2 h-6 w-6 cursor-pointer text-primary', {
           [styles.enter]: isDark,
           [styles.exit]: isLight,
         })}

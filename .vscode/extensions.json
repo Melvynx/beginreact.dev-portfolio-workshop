@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "formulahendry.auto-rename-tag",
+    "naumovs.color-highlight",
+    "pkief.material-icon-theme",
+    "usernamehw.errorlens",
+    "heybourn.headwind",
+    "bradlc.vscode-tailwindcss"
+  ]
+}

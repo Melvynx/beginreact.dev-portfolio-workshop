@@ -1,15 +1,15 @@
-import { MemoryBoard } from "./MemoryBoard";
-import { Typography } from "../atom/Typography";
-import { MemoryContextProvider, useMemory } from "./MemoryProvider";
-import { SectionWrapper } from "../atom/SectionWrapper";
-import { Button } from "../atom/Button";
+import { Button } from '../atom/Button';
+import { SectionWrapper } from '../atom/SectionWrapper';
+import { Typography } from '../atom/Typography';
+import { MemoryBoard } from './MemoryBoard';
+import { MemoryContextProvider, useMemory } from './MemoryProvider';
 
 export const MemorySection = () => {
   return (
     <SectionWrapper title="You're boring ? Let's play a game !">
       <MemoryContextProvider>
-        <div className="flex flex-col gap-14 items-center">
-          <div className="flex flex-col gap-2 items-center">
+        <div className="flex flex-col items-center gap-14">
+          <div className="flex flex-col items-center gap-2">
             <CurrentScore />
             <MemoryBoard />
             <ResetButton />
@@ -35,7 +35,11 @@ const CurrentScore = () => {
 };
 
 const ResetButton = () => {
-  const { reset } = useMemory();
+  const { reset, tryCount } = useMemory();
 
-  return <Button onClick={reset}>Reset</Button>;
+  return (
+    <Button disabled={tryCount === 0} onClick={reset}>
+      Reset
+    </Button>
+  );
 };
