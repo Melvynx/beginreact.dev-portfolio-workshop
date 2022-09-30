@@ -49,7 +49,7 @@ export const useFetch = (url, config) => {
         }
         dispatch({ type: 'rejected', error });
       });
-  }, [config, url]);
+  }, [config, isMounted, url]);
 
   useEffect(() => {
     run();
