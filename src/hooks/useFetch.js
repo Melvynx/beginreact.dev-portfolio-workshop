@@ -1,16 +1,16 @@
-import React, { useCallback, useEffect, useReducer } from "react";
-import { useIsMounted } from "./useIsMounted";
+import { useCallback, useEffect, useReducer } from 'react';
+import { useIsMounted } from './useIsMounted';
 
 function fetchReducer(state, action) {
   switch (action.type) {
-    case "pending": {
-      return { status: "pending", data: null, error: null };
+    case 'pending': {
+      return { status: 'pending', data: null, error: null };
     }
-    case "resolved": {
-      return { status: "resolved", data: action.data, error: null };
+    case 'resolved': {
+      return { status: 'resolved', data: action.data, error: null };
     }
-    case "rejected": {
-      return { status: "rejected", data: null, error: action.error };
+    case 'rejected': {
+      return { status: 'rejected', data: null, error: action.error };
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
@@ -20,7 +20,7 @@ function fetchReducer(state, action) {
 
 export const useFetch = (url, config) => {
   const [state, dispatch] = useReducer(fetchReducer, {
-    status: "idle",
+    status: 'idle',
     data: null,
     error: null,
   });
@@ -39,16 +39,16 @@ export const useFetch = (url, config) => {
 
         if (res.ok) {
           console.log({ json });
-          dispatch({ type: "resolved", data: json });
+          dispatch({ type: 'resolved', data: json });
         } else {
-          dispatch({ type: "rejected", error: json });
+          dispatch({ type: 'rejected', error: json });
         }
       })
       .catch((error) => {
         if (!isMounted()) {
           return;
         }
-        dispatch({ type: "rejected", error });
+        dispatch({ type: 'rejected', error });
       });
   }, [config, url]);
 
@@ -61,9 +61,9 @@ export const useFetch = (url, config) => {
     status,
     data,
     run,
-    isLoading: status === "pending",
-    isIdle: status === "idle",
-    isResolved: status === "resolved",
-    isRejected: status === "rejected",
+    isLoading: status === 'pending',
+    isIdle: status === 'idle',
+    isResolved: status === 'resolved',
+    isRejected: status === 'rejected',
   };
 };
