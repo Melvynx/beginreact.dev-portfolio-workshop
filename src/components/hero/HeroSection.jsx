@@ -1,4 +1,4 @@
-g import { FULL_NAME } from '../../lib/config';
+import { FULL_NAME } from '../../lib/config';
 
 export const HeroSection = () => {
   return (

@@ -1,5 +1,5 @@
 /* keyframe flip animation */
-@-webkit-keyframes bounce {
+@keyframes bounce {
   0% {
     transform: scale(1);
   }
