@@ -1,7 +1,7 @@
-import clsx from "clsx";
-import styles from "./MemoryCard.module.css";
-import { CARD_STATE } from "../../lib/memory";
-import { useTheme } from "../../context/ThemeProvider";
+import clsx from 'clsx';
+import { useTheme } from '../../context/ThemeProvider';
+import { CARD_STATE } from '../../lib/memory';
+import styles from './MemoryCard.module.css';
 
 export const MemoryCard = ({ children, card, onClick }) => {
   const isReturned =
@@ -12,21 +12,20 @@ export const MemoryCard = ({ children, card, onClick }) => {
       <button
         className={clsx(
           styles.transition,
-          "border-primary p-0.5 rounded bg-secondary",
+          'rounded border-primary bg-secondary p-0.5',
           {
-            [clsx("!bg-red-400", styles.rotate)]: !isReturned,
-            [clsx("!bg-green-400", styles.bounce)]:
-              card.state === CARD_STATE.FIND,
+            [clsx('!bg-red-400', styles.rotate)]: !isReturned,
+            [clsx('!bg-green-400', styles.bounce)]: card.state === CARD_STATE.FIND,
           }
         )}
       >
-        <span className="bg-paper p-3 block rounded">{children}</span>
+        <span className="block p-3 rounded bg-paper">{children}</span>
       </button>
       <button
-        style={{ backfaceVisibility: "hidden" }}
+        style={{ backfaceVisibility: 'hidden' }}
         className={clsx(
           styles.transition,
-          "border-primary border-2 bg-paper rounded p-3 absolute inset-0 flex",
+          'absolute inset-0 flex rounded border-2 border-primary bg-paper p-3',
           {
             [styles.rotate]: isReturned,
           }
@@ -40,5 +39,5 @@ export const MemoryCard = ({ children, card, onClick }) => {
 
 const QuestionEmoji = () => {
   const { isLight } = useTheme();
-  return isLight ? "❓" : "❔";
+  return isLight ? '❓' : '❔';
 };

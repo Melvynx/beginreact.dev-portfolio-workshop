@@ -21,17 +21,17 @@ export const MemorySection = () => {
 };
 
 const CurrentScore = () => {
-  const { score, isFinish } = useMemory();
+  const { tryCount, isFinish } = useMemory();
 
   if (isFinish) {
     return (
       <Typography variant="body2 underline">
-        You <b>finished</b> the memory in {score} times !
+        You <b>finished</b> the memory in {tryCount} times !
       </Typography>
     );
   }
 
-  return <Typography variant="body2">You try {score} times.</Typography>;
+  return <Typography variant="body2">You try {tryCount} times.</Typography>;
 };
 
 const ResetButton = () => {
