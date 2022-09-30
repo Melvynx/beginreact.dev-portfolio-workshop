@@ -4,7 +4,6 @@ import { useMemory } from './MemoryProvider';
 
 export const MemoryBoard = () => {
   const { cards, returnCard } = useMemory();
-  console.log(cards);
 
   if (!cards) {
     return (

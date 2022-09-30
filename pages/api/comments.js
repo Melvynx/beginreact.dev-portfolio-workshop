@@ -1,17 +1,21 @@
-import { Client } from "@notionhq/client";
-import Filter from "bad-words";
+import { Client } from '@notionhq/client';
+import Filter from 'bad-words';
+
+if (!process.env.NOTION_API_TOKEN) {
+  throw new Error('NOTION_API_TOKEN is required');
+}
 
 const notion = new Client({ auth: process.env.NOTION_API_TOKEN });
 const IP_CACHE = {};
 const filter = new Filter();
-const isDevelopment = process.env.NODE_ENV === "development";
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 const handler = async (req, res) => {
-  if (req.method === "POST") {
+  if (req.method === 'POST') {
     await postHandler(req, res);
     return;
   }
-  if (req.method === "GET") {
+  if (req.method === 'GET') {
     await getHandler(req, res);
     return;
   }
@@ -20,10 +24,10 @@ const handler = async (req, res) => {
 
 const postHandler = async (req, res) => {
   const { username, comment } = JSON.parse(req.body);
-  const ip = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
+  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
   if (filter.isProfane(comment) || filter.isProfane(username)) {
-    res.status(400).json({ error: "Comment is profane" });
+    res.status(400).json({ error: 'Comment is profane' });
     return;
   }
 
@@ -34,7 +38,7 @@ const postHandler = async (req, res) => {
     });
     if (ipDate.length >= 1) {
       res.status(403).json({
-        error: "You can only post 3 comments per day",
+        error: 'You can only post 3 comments per day',
       });
       return;
     }
@@ -44,13 +48,13 @@ const postHandler = async (req, res) => {
   }
 
   if (!username || !comment) {
-    res.status(400).json({ error: "Username and Comment are required" });
+    res.status(400).json({ error: 'Username and Comment are required' });
     return;
   }
 
   const response = await notion.pages.create({
     parent: {
-      type: "database_id",
+      type: 'database_id',
       database_id: process.env.NOTION_DATABASE_ID,
     },
     properties: {
@@ -84,8 +88,8 @@ const getHandler = async (req, res) => {
     page_size: 9,
     sorts: [
       {
-        property: "Created",
-        direction: "descending",
+        property: 'Created',
+        direction: 'descending',
       },
     ],
   });

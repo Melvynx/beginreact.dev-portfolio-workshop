@@ -38,7 +38,6 @@ export const useFetch = (url, config) => {
         }
 
         if (res.ok) {
-          console.log({ json });
           dispatch({ type: 'resolved', data: json });
         } else {
           dispatch({ type: 'rejected', error: json });

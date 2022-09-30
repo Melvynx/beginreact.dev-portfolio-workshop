@@ -1,3 +1,7 @@
+if (!process.env.GITHUB_TOKEN) {
+  throw new Error('NOTION_API_TOKEN is required');
+}
+
 const handler = async (req, res) => {
   const username = req.query.username;
 
@@ -19,10 +23,10 @@ const handler = async (req, res) => {
   }
   `;
   const response = await fetch(`https://api.github.com/graphql`, {
-    method: "POST",
+    method: 'POST',
     headers: {
       Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({ query }),
   }).then((r) => r.json());
