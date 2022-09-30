@@ -35,9 +35,13 @@ export const DrawCanvas = ({ canvas }) => {
   };
 
   useEffect(() => {
-    window.addEventListener('mouseup', stopDrawing);
+    const handleMouseUp = () => {
+      stopDrawing()
+    }
+
+    window.addEventListener('mouseup', handleMouseUp);
     return () => {
-      window.removeEventListener('mouseup', stopDrawing);
+      window.removeEventListener('mouseup', handleMouseUp);
     };
   }, []);
 
