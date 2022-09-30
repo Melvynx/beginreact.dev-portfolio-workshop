@@ -18,7 +18,7 @@ export const Header = () => {
 
 const ToggleThemeButton = () => {
   // Dark Mode - Exercise
-  const isDark = false;
+  const isDark = true;
   const isLight = false;
   const toggleTheme = () => {};
 

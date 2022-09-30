@@ -1,11 +1,11 @@
 # Exercise
 
-Je t'ai présenté 4 sections, il y aura plusieurs exercise par section.
+Je t'ai présenté 6 sections, il y aura plusieurs exercise par section.
 Chaque fois une vidéo solution ainsi que des petits hints caché dans le
 fichier `TIPS.md`. Ouvre-les uniquement si tu en as besoin !
 
 Je ne veux pas que tu restes bloqué 4 heures. N'oublie pas les communautés
-Discord et Twitter à utiliser !
+Discord et Twitter à utiliser **SANS LIMITE**. !
 
 ## Dark Mode
 
@@ -17,12 +17,16 @@ Discord et Twitter à utiliser !
 
 ## GitHub Repository
 
-[Github exercise](./EXERCISES/3.github.md)
+[Github projects exercise](./EXERCISES/3.projects.md)
 
 ## Memory Game
 
 [Memory exercise](./EXERCISES/4.memory.md)
 
+## Draw
+
+[Github exercise](./EXERCISES/5.draw.md)
+
 ## Les commentaires
 
-[Commentaire exe]
+[Commentaire exercise](./EXERCISES/6.commentaire.md)

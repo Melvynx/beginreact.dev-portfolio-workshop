@@ -1,9 +1,4 @@
-export const DrawControl = ({
-  defaultColor,
-  defaultSize,
-  onColorChange,
-  onSizeChange,
-}) => {
+export const DrawControl = () => {
   return (
     <div>
       <label
@@ -11,31 +6,14 @@ export const DrawControl = ({
         className="flex items-center justify-center gap-4"
       >
         Color
-        <input
-          id="draw-color-picker"
-          type="color"
-          defaultValue={defaultColor}
-          onChange={(e) => {
-            onColorChange(e.target.value);
-          }}
-        />
+        <input id="draw-color-picker" type="color" />
       </label>
       <label
         htmlFor="draw-size-picker"
         className="flex items-center justify-center gap-4"
       >
         Line size
-        <input
-          id="draw-size-picker"
-          type="range"
-          min="2"
-          max="32"
-          step="2"
-          defaultValue={defaultSize}
-          onChange={(e) => {
-            onSizeChange(e.target.value);
-          }}
-        />
+        <input id="draw-size-picker" type="range" min="2" max="32" step="2" />
       </label>
     </div>
   );
