@@ -1,10 +1,6 @@
 # Portfolio - Final exercise
 
-<<<<<<< Updated upstream
-Dans cet exercice on va valider ensemble tes compétences.
-=======
 Workshop final pour crée son portfolio.
->>>>>>> Stashed changes
 
 ## Pré-requis
 
@@ -52,7 +48,7 @@ Rends toi dans [le portail developpeur de Notion](https://www.notion.so/my-integ
 Crée toi un compte si ce n'est pas déjà fait puis clique sur `New Integration`.
 
 Tu peux mettre comme nom : "Portfolio - BeginReact" puis cocher `Read content`,
-`Update content` et `Create Content` et séléctionne `No User Information` dans
+`Update content` et `Create Content` et sélectionne `No User Information` dans
 `User capabilities`.
 
 Prend le token et ajoute le dans le fichier `.env` avec la clé `NOTION_API_TOKEN`.
@@ -60,18 +56,11 @@ Prend le token et ajoute le dans le fichier `.env` avec la clé `NOTION_API_TOKE
 Ensuite rends toi dans Notion et ajoute une Nouvelle page dans laquelle tu vas
 créer une database en full page.
 
-<<<<<<< Updated upstream
-Tu vas ajouter les champs suivants : 
-* Username -> title
-* Comment -> text
-* Created -> Created Time
-=======
 Tu vas ajouter les champs suivant :
 
 - Username -> title
 - Comment -> text
 - Created -> Created Time
->>>>>>> Stashed changes
 
 En haut à gauche tu peux cliquer sur le bouton partager et récupérer l'URL de notion.
 
@@ -173,22 +162,21 @@ feature de NextJS spécifique, ce sera un autre sujet.
 ## Structure du projet
 
 <<<<<<< Updated upstream
-* `pages`: dossier Next.JS, pas besoin de le toucher
-* `src`
-  * `lib`: c'est tout ce qui n'est pas du react mais qui est utile.
-  * `hooks`: tous les hooks React
-  * `styles`: tous les styles CSS, notamment le thème ainsi que les styles Tailwind.
-  * `components`
-    * `atoms`: tous les composants qui sont des éléments élémentaires ()
-=======
+
 - `pages`: dossier Next.JS, pas besoin de le toucher
 - `src`
+  - `lib`: c'est tout ce qui n'est pas du react mais qui est utile.
+  - `hooks`: tous les hooks React
+  - `styles`: tous les styles CSS, notamment le thème ainsi que les styles Tailwind.
+  - # `components` \* `atoms`: tous les composants qui sont des éléments élémentaires ()
+
+* `pages`: dossier Next.JS, pas besoin de le toucher
+* `src`
   - `lib`: c'est tous ce qui n'est pas du react mais qui est utiles.
   - `hooks`: tous les hooks React
   - `styles`: tous les styles CSS, notamment le thème ainsi que les styles Tailwind.
-  - `components`
-    - `atoms`: tous les composants qui sont des éléments élémentaires ()
->>>>>>> Stashed changes
+  - `components` - `atoms`: tous les composants qui sont des éléments élémentaires ()
+    > > > > > > > Stashed changes
 
 ## Exercise !
 
