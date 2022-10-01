@@ -27,6 +27,8 @@ Pour lancer le projet :
 npm run dev
 ```
 
+## Setup token
+
 Ensuite il va te falloir récupérer quelques Token !
 
 1. Token Github
