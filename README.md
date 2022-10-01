@@ -16,8 +16,8 @@ Workshop final pour crée son portfolio.
 ## Setup du projet
 
 ```bash
-git clone https://github.com/Melvynx/beginreact.dev-hooks.git
-cd beginreact.dev-hooks
+git clone https://github.com/Melvynx/beginreact.dev-portfolio-workshop.git
+cd beginreact.dev-portfolio-workshop
 npm install
 ```
 
