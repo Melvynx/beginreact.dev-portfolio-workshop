@@ -101,7 +101,7 @@ function fetchReducer(state, action) {
   <summary>Tips 2</summary>
 
 Voici la fonction qui permet de fetch les données via
-notre hooks.
+notre hook.
 
 ```js
 const run = useCallback(() => {
@@ -126,7 +126,7 @@ const run = useCallback(() => {
 <details>
   <summary>Tips 2</summary>
 
-Le hooks est ici : https://usehooks-ts.com/react-hook/use-is-mounted
+Le hook est ici : https://usehooks-ts.com/react-hook/use-is-mounted
 
 ```js
 const run = useCallback(() => {
@@ -156,7 +156,7 @@ const run = useCallback(() => {
 <details>
 <summary>Tips 1</summary>
 
-Voici les states de notre context ainsi que la méthode pour savoir si c'est finit.
+Voici les states de notre context ainsi que la méthode pour savoir si c'est fini.
 
 ```js
 const [cards, setCards] = useState(() => getInitialMemory()); // utiliser une fonction ici !
@@ -175,17 +175,17 @@ J'utilise useMemo pour éviter de recalculer la méthode `isMemoryFinished` chaq
 Dans la fonction `returnCard` qui est appelé lorsque qu'on clique sur
 une carte, on set le state pour cette carte.
 
-Ensuite ce useEffect va être appelé. Je récupère toutes les cartes
+Ensuite, ce useEffect va être appelé. Je récupère toutes les cartes,
 retourne et vérifie qu'il y en a 2 (car le check ne se produit que
 avec deux cartes).
 
-Et dans ce cas, je regarde si les cartes sont pair et j'ajoute
-un setTimeout pour changer les state des cartes retourné en HIDE ou
+Et dans ce cas, je regarde si les cartes sont paires et j'ajoute
+un setTimeout pour changer les states des cartes retournées en HIDE ou
 FIND en fonction de `isPair`.
 
 ```js
 useEffect(() => {
-  const returnedCards = // récupère les cartes retourné
+  const returnedCards = // récupère les cartes retournées
 
   // Si il y en a pas 2, on ne fait rien
   if (returnedCards.length !== 2) {
@@ -230,16 +230,16 @@ C'est quand on clique sur une carte.
 
 ```js
 const returnCard = (returnedCard) => {
-  // Vérifier que l'utilisateur clique sur une carte caché
+  // Vérifier que l'utilisateur clique sur une carte cachée
 
-  // Récupéré toutes les cartes retournées avec .filter
+  // Récupérer toutes les cartes retournées avec .filter
 
-  // Si il y en a plus de 2, on ne fait rien ou si la carte retourné faisaient partie des cartes retournées avant (si on a recliqué dessus)
+  // Si il y en a plus de 2, on ne fait rien ou si la carte retournée faisait parti des cartes retournées avant (si on a recliqué dessus)
   if (/*...*/) {
     return;
   }
 
-  // Modifie le state de la carte retourné en utilisant .map ou .find et en copiant le tableau
+  // Modifie le state de la carte retournée en utilisant .map ou .find et en copiant le tableau
 };
 ```
 
@@ -328,7 +328,7 @@ Voici les props du draw control et un exemple de son utilisation !
 <details>
   <summary>Tips 4</summary>
 
-Le useEffect appel toujours une fonction lié aux useEffect pour éviter des problèmes.
+Le useEffect appelle toujours une fonction liée au useEffect pour éviter des problèmes.
 
 ```jsx
 // Pour reset le canvas
@@ -397,15 +397,15 @@ return (
 <details>
   <summary>Tips 3</summary>
 
-Tu as deux chois :
+Tu as deux choix :
 
-- soit tu met toute la logique dans `ComponentForm` et tu ajoute une props
-  dans ce composant pour modifier refresh les commentaires. Cette props sera
-  appelé après avoir ajouté un commentaire sans erreur.
-- (plus dure) soit tu gère la logique dans le component `ComponentSection` et tu vas
+- soit tu mets toute la logique dans `ComponentForm` et tu ajoutes une props
+  dans ce composant pour modifier, refresh les commentaires. Cette props sera
+  appelée après avoir ajouté un commentaire sans erreur.
+- (plus difficile) soit tu gères la logique dans le composant `ComponentSection` et tu vas
   passer une fonction en paramètre dans le composant `ComponentForm` qui ne gérera
   que la récupération des commentaires. En fonction de la réponse de l'api, cette
-  props peut retourné une promise pour redonner l'information à l'enfant
+  props peut retourner une promise pour redonner l'information à l'enfant
 
 J'ai choisis l'exemple 2 avec :
 
@@ -426,7 +426,7 @@ const onAddComment = (comment) =>
   });
 ```
 
-Et dans le composant `ComponentForm` je peux l'utilise comme ceci :
+Et dans le composant `ComponentForm` je peux l'utiliser comme ceci :
 
 ```jsx
 onSubmit({ username, comment })
