@@ -9,7 +9,9 @@ export const Project = ({ name, description, stargazerCount, url, homepageUrl })
           {name}
         </Typography>
       </a>
-      <Typography variant="body1">{description}</Typography>
+      <Typography variant="body1" className="break-words">
+        {description}
+      </Typography>
       {homepageUrl ? (
         <a className="underline text-primary" href={homepageUrl}>
           {homepageUrl.replace('https://', '')}
