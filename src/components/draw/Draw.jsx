@@ -1,11 +1,12 @@
-import { useRef } from 'react';
-import { Button } from '../atom/Button';
-import { DrawCanvas } from './DrawCanvas';
-import { DrawControl } from './DrawControl';
+import { useRef } from "react";
+import { Button } from "../atom/Button";
+import { DrawCanvas } from "./DrawCanvas";
+import { DrawControl } from "./DrawControl";
 
-const DEFAULT_COLOR = '#000000';
+const DEFAULT_COLOR = "#000000";
 const DEFAULT_SIZE = 4;
 
+// Draw exercise
 export const Draw = () => {
   const canvas = useRef(null);
 

@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
-// import { getCoordinates } from '../../lib/canvas';
+import { useEffect, useRef } from "react";
 
+// Draw exercise
 export const DrawCanvas = ({ canvas }) => {
   const isDrawing = useRef(false);
   const lastCoordinate = useRef(null);

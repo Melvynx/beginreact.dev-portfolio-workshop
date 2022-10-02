@@ -1,3 +1,4 @@
+// Draw exercise
 export const DrawControl = () => {
   return (
     <div>

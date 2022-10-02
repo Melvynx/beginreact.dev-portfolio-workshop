@@ -163,22 +163,12 @@ feature de NextJS spécifique, ce sera un autre sujet.
 
 ## Structure du projet
 
-<<<<<<< Updated upstream
-
 - `pages`: dossier Next.JS, pas besoin de le toucher
 - `src`
-  - `lib`: c'est tout ce qui n'est pas du react mais qui est utile.
-  - `hooks`: tous les hooks React
-  - `styles`: tous les styles CSS, notamment le thème ainsi que les styles Tailwind.
-  - # `components` \* `atoms`: tous les composants qui sont des éléments élémentaires ()
-
-* `pages`: dossier Next.JS, pas besoin de le toucher
-* `src`
   - `lib`: c'est tous ce qui n'est pas du react mais qui est utiles.
   - `hooks`: tous les hooks React
   - `styles`: tous les styles CSS, notamment le thème ainsi que les styles Tailwind.
   - `components` - `atoms`: tous les composants qui sont des éléments élémentaires ()
-    > > > > > > > Stashed changes
 
 ## Exercise !
 
