@@ -3,35 +3,35 @@ import { getCoordinates } from '../../lib/canvas';
 
 export const DrawCanvas = ({ canvas }) => {
   const isDrawing = useRef(false);
-  const prevMouse = useRef(null);
+  const lastCoordinate = useRef(null);
 
   const startDrawing = (event) => {
     isDrawing.current = true;
-    prevMouse.current = getCoordinates(event, canvas.current);
+    lastCoordinate.current = getCoordinates(event, canvas.current);
   };
 
   const stopDrawing = () => {
     isDrawing.current = false;
-    prevMouse.current = null;
+    lastCoordinate.current = null;
   };
 
   const draw = (event) => {
     if (!isDrawing.current) return;
     const context = canvas.current?.getContext('2d');
-    const mouse = getCoordinates(event, canvas.current);
+    const coordinate = getCoordinates(event, canvas.current);
 
-    if (!context || !mouse) return;
+    if (!context || !coordinate) return;
 
-    if (prevMouse.current) {
+    if (lastCoordinate.current) {
       context.lineCap = 'round';
       context.lineJoin = 'round';
       context.beginPath();
-      context.moveTo(prevMouse.current.x, prevMouse.current.y);
-      context.lineTo(mouse.x, mouse.y);
+      context.moveTo(lastCoordinate.current.x, lastCoordinate.current.y);
+      context.lineTo(coordinate.x, coordinate.y);
       context.stroke();
     }
 
-    prevMouse.current = mouse;
+    lastCoordinate.current = coordinate;
   };
 
   useEffect(() => {
@@ -49,7 +49,6 @@ export const DrawCanvas = ({ canvas }) => {
     <canvas
       onMouseDown={startDrawing}
       onMouseMove={draw}
-      onMouseUp={stopDrawing}
       width={560}
       height={315}
       ref={canvas}

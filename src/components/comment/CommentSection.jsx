@@ -16,8 +16,7 @@ export const CommentSection = () => {
     run,
   } = useFetch(commentsUrl);
 
-  const onAddComment = (comment) => {
-    return fetch(commentsUrl, {
+  const onAddComment = (comment) => fetch(commentsUrl, {
       method: "POST",
       body: JSON.stringify(comment),
     }).then(async (res) => {
@@ -30,7 +29,6 @@ export const CommentSection = () => {
 
       return Promise.reject(json.error);
     });
-  };
 
   return (
     <SectionWrapper title="On est à l'époque de FaceBook ?">
@@ -46,7 +44,7 @@ export const CommentSection = () => {
             <Typography variant="body1">
               Sorry, there is an error : {error}
             </Typography>
-          ) : null}
+          ) : null} 
         </div>
         <CommentForm onSubmit={onAddComment} />
       </div>

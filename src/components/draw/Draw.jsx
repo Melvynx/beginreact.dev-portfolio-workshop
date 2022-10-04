@@ -10,8 +10,11 @@ export const Draw = () => {
   const canvas = useRef(null);
 
   useEffect(() => {
-    canvas.current.getContext('2d').strokeStyle = DEFAULT_COLOR;
-    canvas.current.getContext('2d').lineWidth = DEFAULT_SIZE;
+    const canvasContext = canvas.current.getContext('2d')
+    if (!canvasContext) return;
+
+    canvasContext.strokeStyle = DEFAULT_COLOR;
+    canvasContext.lineWidth = DEFAULT_SIZE;
   }, []);
 
   return (
