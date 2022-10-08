@@ -1,7 +1,6 @@
-import { useTheme } from '../context/ThemeProvider';
 import { FULL_NAME, SOCIAL_NETWORKS } from '../lib/config';
 import { SocialNetworks } from './atom/SocialNetwork';
-import { ToggleThemeButton } from "./ToggleThemeButton";
+import { ToggleThemeButton } from './ToggleThemeButton';
 
 export const Header = () => {
   return (
