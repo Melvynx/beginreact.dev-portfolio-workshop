@@ -3,7 +3,7 @@ import {
   CARD_STATE,
   getInitialMemory,
   isMemoryFinished,
-  isPairCards,
+  isPairCards
 } from "../../lib/memory";
 
 const MemoryContext = createContext();

@@ -36,8 +36,8 @@ export const DrawCanvas = ({ canvas }) => {
 
   useEffect(() => {
     const handleMouseUp = () => {
-      stopDrawing()
-    }
+      stopDrawing();
+    };
 
     window.addEventListener('mouseup', handleMouseUp);
     return () => {
@@ -46,13 +46,15 @@ export const DrawCanvas = ({ canvas }) => {
   }, []);
 
   return (
-    <canvas
-      onMouseDown={startDrawing}
-      onMouseMove={draw}
-      width={560}
-      height={315}
-      ref={canvas}
-      className="m-auto bg-white rounded-md shadow-md"
-    />
+    <div className="max-w-[90vw] overflow-hidden">
+      <canvas
+        onMouseDown={startDrawing}
+        onMouseMove={draw}
+        width={560}
+        height={315}
+        ref={canvas}
+        className="m-auto bg-white rounded-md shadow-md"
+      />
+    </div>
   );
 };
