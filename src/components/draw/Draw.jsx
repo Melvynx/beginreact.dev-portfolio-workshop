@@ -10,7 +10,7 @@ export const Draw = () => {
   const canvas = useRef(null);
 
   useEffect(() => {
-    const canvasContext = canvas.current.getContext('2d')
+    const canvasContext = canvas.current.getContext('2d');
     if (!canvasContext) return;
 
     canvasContext.strokeStyle = DEFAULT_COLOR;
@@ -30,7 +30,7 @@ export const Draw = () => {
           canvas.current.getContext('2d').lineWidth = size;
         }}
       />
-      <div className="flex gap-4 m-auto">
+      <div className="m-auto flex gap-4">
         <Button
           onClick={() => {
             canvas.current
