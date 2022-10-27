@@ -1,17 +1,17 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useMemo, useState } from 'react';
 import {
   CARD_STATE,
   getInitialMemory,
   isMemoryFinished,
-  isPairCards
-} from "../../lib/memory";
+  isPairCards,
+} from '../../lib/memory';
 
 const MemoryContext = createContext();
 
 export const useMemory = () => {
   const context = useContext(MemoryContext);
   if (!context) {
-    throw new Error("Memory is not initialized");
+    throw new Error('Memory is not initialized');
   }
   return context;
 };
@@ -33,34 +33,32 @@ export const MemoryContextProvider = ({ children }) => {
       return;
     }
 
-    const newCards = cards.map((card) => {
-      if (returnedCard.id === card.id) {
-        card.state = CARD_STATE.RETURNED;
+    setCards((current) =>
+      current.map((card) => {
+        if (returnedCard.id === card.id) {
+          card.state = CARD_STATE.RETURNED;
+          return card;
+        }
         return card;
-      }
-      return card;
-    });
+      })
+    );
 
-    setCards(newCards);
-  };
-
-  useEffect(() => {
-    const returnedCards = cards.filter((c) => c.state === CARD_STATE.RETURNED);
-
-    if (returnedCards.length !== 2) {
+    if (returnedCards.length === 0) {
       return;
     }
 
+    returnedCards.push(returnedCard);
     const isPair = isPairCards(returnedCards[0], returnedCards[1]);
 
+    onCardChange(isPair, returnedCards);
+  };
+
+  const onCardChange = (isPair, returnedCards) => {
     setTimeout(
       () => {
-        setCards((prev) =>
-          prev.map((card) => {
-            if (
-              card.state === CARD_STATE.RETURNED &&
-              returnedCards.includes(card)
-            ) {
+        setCards((current) =>
+          current.map((card) => {
+            if (card.state === CARD_STATE.RETURNED && returnedCards.includes(card)) {
               card.state = isPair ? CARD_STATE.FIND : CARD_STATE.HIDE;
             }
             return card;
@@ -71,7 +69,7 @@ export const MemoryContextProvider = ({ children }) => {
       },
       isPair ? 400 : 1000
     );
-  }, [cards]);
+  };
 
   const reset = () => {
     setCards(getInitialMemory());
@@ -79,9 +77,7 @@ export const MemoryContextProvider = ({ children }) => {
   };
 
   return (
-    <MemoryContext.Provider
-      value={{ cards, returnCard, tryCount, reset, isFinish }}
-    >
+    <MemoryContext.Provider value={{ cards, returnCard, tryCount, reset, isFinish }}>
       {children}
     </MemoryContext.Provider>
   );
