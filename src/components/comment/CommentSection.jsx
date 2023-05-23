@@ -1,10 +1,10 @@
-import { CommentForm } from "./CommentForm";
-import { Comment } from "./Comment";
-import { SectionWrapper } from "../atom/SectionWrapper";
-import { useFetch } from "../../hooks/useFetch";
-import { commentsUrl } from "../../lib/api-url";
-import { Typography } from "../atom/Typography";
-import { Loader } from "../atom/Loader";
+import { useFetch } from '../../hooks/useFetch';
+import { commentsUrl } from '../../lib/api-url';
+import { Loader } from '../atom/Loader';
+import { SectionWrapper } from '../atom/SectionWrapper';
+import { Typography } from '../atom/Typography';
+import { Comment } from './Comment';
+import { CommentForm } from './CommentForm';
 
 export const CommentSection = () => {
   const {
@@ -16,8 +16,9 @@ export const CommentSection = () => {
     run,
   } = useFetch(commentsUrl);
 
-  const onAddComment = (comment) => fetch(commentsUrl, {
-      method: "POST",
+  const onAddComment = (comment) =>
+    fetch(commentsUrl, {
+      method: 'POST',
       body: JSON.stringify(comment),
     }).then(async (res) => {
       const json = await res.json();
@@ -32,19 +33,17 @@ export const CommentSection = () => {
 
   return (
     <SectionWrapper title="On est à l'époque de FaceBook ?">
-      <div className=" max-w-2xl m-auto flex flex-col items-center w-full gap-8">
-        <div className="grid w-full justify-center grid-cols-auto-fill-200-300 gap-4">
+      <div className=" m-auto flex w-full max-w-2xl flex-col items-center gap-8">
+        <div className="grid w-full grid-cols-auto-fill-200-300 justify-center gap-4">
           {isResolved
-            ? comments.map((comment) => (
-                <Comment key={comment.id} {...comment} />
-              ))
+            ? comments.map((comment) => <Comment key={comment.id} {...comment} />)
             : null}
           {isLoading ? <Loader /> : null}
           {isRejected ? (
             <Typography variant="body1">
               Sorry, there is an error : {error}
             </Typography>
-          ) : null} 
+          ) : null}
         </div>
         <CommentForm onSubmit={onAddComment} />
       </div>
