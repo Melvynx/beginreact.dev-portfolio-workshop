@@ -1,12 +1,16 @@
 import styles from "./ToggleThemeButton.module.css";
 import { MdOutlineModeNight, MdOutlineWbSunny } from "react-icons/md";
 import clsx from "clsx";
+import { useContext } from "react";
+import { DarkModeContexte } from "../context/ThemeProvider"
 
 export const ToggleThemeButton = () => {
   // Dark Mode - Exercise
-  const isDark = true;
-  const isLight = false;
-  const toggleTheme = () => {};
+  const { setMode, isDark, isLight } = useContext(DarkModeContexte);
+
+  const toggleTheme = () => {
+    return setMode((curr) => (curr === "dark" ? "" : "dark"));
+  };
 
   return (
     <div className="overflow-hidden relative p-2 rounded-full border-primary">
